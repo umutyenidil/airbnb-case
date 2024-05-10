@@ -14,7 +14,7 @@ const HomePageCard = ({data}) => {
         if (data && data.delay) {
             setTimeout(
                 () => cardPlaceholderAnimationControls.start({opacity: 0}),
-                data.delay,
+                data.delay + 250,
             );
         }
     }, [data]);
