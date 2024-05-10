@@ -7,8 +7,8 @@ const HomePage = () => {
 
         return (
             <div className='p-32'>
-                <div className='grid grid-cols-4 gap-8'>
-                    {posts && posts.map((post) => (<HomePageCard key={post.id}
+                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8'>
+                    {posts && posts.map((post) => (<HomePageCard key={Math.random()}
                                                                  data={post}/>))}
                 </div>
             </div>
