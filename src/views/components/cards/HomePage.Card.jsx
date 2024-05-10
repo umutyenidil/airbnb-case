@@ -2,8 +2,6 @@ import {motion, useAnimationControls} from "framer-motion";
 import PropTypes from "prop-types";
 import {useContext, useEffect, useState} from "react";
 import {IconCurrencyLira, IconUpload} from "@tabler/icons-react";
-import {HomeContext} from "../../../contexts/Home.Context.jsx";
-import placeHolder from '../../../assets/images/placeholder.png';
 
 const HomePageCard = ({data}) => {
     const [isDataVisible, setIsDataVisible] = useState(false);
@@ -14,7 +12,7 @@ const HomePageCard = ({data}) => {
         if (data && data.delay) {
             setTimeout(
                 () => cardPlaceholderAnimationControls.start({opacity: 0}),
-                data.delay + 250,
+                data.delay + 500,
             );
         }
     }, [data]);
@@ -31,6 +29,7 @@ const HomePageCard = ({data}) => {
                             initial={{opacity: 1}}
                             exit={{opacity: 0}}
                             animate={cardPlaceholderAnimationControls}
+                            transition={{duration: 0.5}}
                             onAnimationComplete={onCardPlaceholderAnimationComplete}>
                     <CardPlaceholder/>
                 </motion.div>
@@ -38,7 +37,8 @@ const HomePageCard = ({data}) => {
             {isDataVisible && (<>
                 <motion.div key={Math.random()}
                             initial={{opacity: 0}}
-                            animate={{opacity: 1}}>
+                            animate={{opacity: 1}}
+                            transition={{duration: 0.5}}>
                     <div className='flex flex-col gap-y-2'>
                         <div className='relative w-full aspect-square rounded-xl'>
                             <img className='bg-slate-200 rounded-xl'
@@ -77,44 +77,6 @@ const HomePageCard = ({data}) => {
                     </div>
                 </motion.div>
             </>)}
-            {/*{isMyTurn && (<>*/}
-            {/*    <div className='flex flex-col gap-y-2'>*/}
-            {/*        <div className='relative w-full aspect-square rounded-xl'>*/}
-            {/*            <img className='bg-slate-200 rounded-xl'*/}
-            {/*                 src={`https://picsum.photos/512?random=${data.data.id}`}*/}
-            {/*                 width={1000}*/}
-            {/*                 height={1000}*/}
-            {/*                 alt={`https://picsum.photos/1024?random=${data.data.id}`}/>*/}
-            {/*            <div className='absolute top-0 w-full flex flex-row items-center justify-between p-4 '>*/}
-            {/*                <CardCountDownTimer/>*/}
-            {/*                <button*/}
-            {/*                    className='appearance-none w-8 h-8 bg-opacity-75 rounded-full bg-slate-200 flex items-center justify-center hover:scale-110 hover:bg-white transition ease-in-out duration-75'>*/}
-            {/*                    <IconUpload size={18}/>*/}
-            {/*                </button>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*        <div className='grid grid-cols-6'>*/}
-            {/*            <div className='h-7 col-span-4'>*/}
-            {/*                <p className='whitespace-nowrap overflow-hidden text-ellipsis font-medium text-md capitalize'>*/}
-            {/*                    {data.data.title}*/}
-            {/*                </p>*/}
-            {/*            </div>*/}
-            {/*            <div className='h-7 col-span-4'>*/}
-            {/*                <p className='whitespace-nowrap overflow-hidden text-ellipsis text-slate-500 text-sm'>*/}
-            {/*                    Ev Sahibi: {data.data.body}*/}
-            {/*                </p>*/}
-            {/*            </div>*/}
-            {/*            <div className='h-7 col-span-4'>*/}
-            {/*                <div className='flex flex-row items-center'>*/}
-            {/*                    <p className='whitespace-nowrap overflow-hidden text-ellipsis text-black font-semibold text-sm'>*/}
-            {/*                        {(data.id * 1000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}*/}
-            {/*                    </p>*/}
-            {/*                    <IconCurrencyLira size={18}/>*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</>)}*/}
         </div>
     );
 };

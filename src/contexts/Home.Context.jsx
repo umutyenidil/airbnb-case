@@ -11,7 +11,7 @@ export const HomeContextProvider = ({children}) => {
         queryFn: async () => {
             const res = await fetch('https://jsonplaceholder.typicode.com/posts');
             const data = await res.json();
-            return Array(25).fill(null).map((item, index) => ({delay: (index + 1) * 50, data: data[index]}));
+            return Array(25).fill(null).map((item, index) => ({delay: (index + 1) * 100, data: data[index]}));
         }
     });
 
